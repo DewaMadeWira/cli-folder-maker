@@ -4,42 +4,14 @@ import { select, text } from '@clack/prompts';
 // import * as fs from 'node:fs';
 import * as fs from 'fs';
 
+// TODO
+// - Add ASCII
+// Deploy to npm
+// check in the current folder
+// Add spinner
 
 async function main() {
     p.intro(`${color.bgGreen(color.white('CLI FOLDER MAKER'))}`);
-    //   / __\ / /   \_   \   / __\/___\/ /   /   \/__\/__\   /\/\    /_\    /\ /\ /__\/__\
-
-    // console.log(`${color.bgGreen(color.white(''))}`);
-
-    //     console.log(
-    //         `%c
-    //  _____  _     _____  ______ _____ _    ______ ___________  ___  ___  ___   _   __ ___________
-    // /  __ \| |   |_   _| |  ___|  _  | |   |  _  \  ___| ___ \ |  \/  | / _ \ | | / /|  ___| ___ \
-    // | /  \/| |     | |   | |_  | | | | |   | | | | |__ | |_/ / | .  . |/ /_\ \| |/ / | |__ | |_/ /
-    // | |    | |     | |   |  _| | | | | |   | | | |  __||    /  | |\/| ||  _  ||    \ |  __||    /
-    // | \__/\| |_____| |_  | |   \ \_/ / |___| |/ /| |___| |\ \  | |  | || | | || |\  \| |___| |\ \
-    //  \____/\_____/\___/  \_|    \___/\_____/___/ \____/\_| \_| \_|  |_/\_| |_/\_| \_/\____/\_| \_|
-    //  `,
-    //         `font-family: monospace`
-    //     );
-
-    // const directory = await text({
-    //     message: 'What is your directory you want',
-    //     placeholder: 'Not sure',`
-    //     initialValue: '42',
-    //     validate(value) {
-    //         if (value.length === 0) return `Value is required!`;
-    //     },
-    // });
-    // const formatDirectory = directory.replace(/\\/g, '/');
-
-    // const semester = await select({
-    //     message: 'Create A folder',
-    //     options: [
-    //         { value: 'Yes', label: 'Yes' },
-    //         { value: 'No', label: 'No', hint: 'oh no' },
-    //     ],
-    // });
 
     const semester = await text({
         message: 'Which semester are you in ?',
