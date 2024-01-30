@@ -4,12 +4,7 @@ import { select, text } from '@clack/prompts';
 // import * as fs from 'node:fs';
 import * as fs from 'fs';
 
-// /  __ \| |   |_   _| |  ___|  _  | |   |  _  \  ___| ___ \ |  \/  | / _ \ | | / /|  ___| ___ \
-// | /  \/| |     | |   | |_  | | | | |   | | | | |__ | |_/ / | .  . |/ /_\ \| |/ / | |__ | |_/ /
-// | |    | |     | |   |  _| | | | | |   | | | |  __||    /  | |\/| ||  _  ||    \ |  __||    /
-// | \__/\| |_____| |_  | |   \ \_/ / |___| |/ /| |___| |\ \  | |  | || | | || |\  \| |___| |\ \
-//  \____/\_____/\___/  \_|    \___/\_____/___/ \____/\_| \_| \_|  |_/\_| |_/\_| \_/\____/\_| \_|
-// D:\Code\Web Development\Misc
+
 async function main() {
     p.intro(`${color.bgGreen(color.white('CLI FOLDER MAKER'))}`);
     //   / __\ / /   \_   \   / __\/___\/ /   /   \/__\/__\   /\/\    /_\    /\ /\ /__\/__\
@@ -55,7 +50,7 @@ async function main() {
             if (value.length === 0) return `Value is required!`;
         },
     });
-    console.log(parseInt(semester));
+
     const subject = await text({
         message: 'Insert your subject.',
         placeholder: 'ML,DS,MOBILE',
@@ -67,9 +62,9 @@ async function main() {
     });
 
     const formattedSubject = subject.split(',');
-    console.log(formattedSubject);
+    // console.log(formattedSubject);
 
-    const folderName = `./Semester 4`;
+    const folderName = `./Semester ${semester}`;
     const subFolder = [
         '1.Tugas',
         '2.Materi',
@@ -81,29 +76,71 @@ async function main() {
     const tugasAndMateri = 17;
     const quiz = 2;
 
-    if (projectType == 'No') return;
-    // try {
-    //     if (!fs.existsSync(folderName)) {
-    //         fs.mkdirSync(folderName);
-    //     }
-    //     subFolder.forEach((items) => {
-    //         if (!fs.existsSync(`${folderName}/${items}`)) {
-    //             fs.mkdirSync(`${folderName}/${items}`);
-    //         }
-    //     });
-    //     for (let i = 0; i < tugasAndMateri; i++) {
-    //         fs.mkdirSync(`${folderName}/${subFolder[0]}/Pertemuan ${i + 1}`);
-    //     }
-    //     for (let i = 0; i < tugasAndMateri; i++) {
-    //         fs.mkdirSync(`${folderName}/${subFolder[1]}/Pertemuan ${i + 1}`);
-    //     }
-    //     for (let i = 0; i < quiz; i++) {
-    //         fs.mkdirSync(`${folderName}/${subFolder[2]}/Pertemuan ${i + 1}`);
-    //     }
-    // } catch (err) {
-    //     console.log('Folder Already Exist !!');
-    //     // console.error(err);
-    // }
-    // console.log(projectType);
+    if (!fs.existsSync(folderName)) {
+        fs.mkdirSync(folderName);
+    }
+    try {
+        for (let i = 0; i < formattedSubject.length; i++) {
+            if (!fs.existsSync(`${folderName}/${formattedSubject[i]}`)) {
+                fs.mkdirSync(`${folderName}/${formattedSubject[i]}`);
+            }
+        }
+        for (let i = 0; i < formattedSubject.length; i++) {
+            for (let j = 0; j < subFolder.length; j++) {
+                // if (
+                //     !fs.existsSync(
+                //         `${folderName}/${formattedSubject[i]}/${items}`
+                //     )
+                // ) {
+                // fs.mkdirSync(
+                //     `${folderName}/${formattedSubject[i]}/${subFolder[j]}`
+                // );
+                fs.mkdirSync(
+                    `${folderName}/${formattedSubject[i]}/${subFolder[j]}`
+                );
+                // }
+            }
+            for (let k = 0; k < tugasAndMateri; k++) {
+                // fs.mkdirSync(
+                //     `${folderName}/${formattedSubject[i]}/${
+                //         subFolder[0]
+                //     }/Pertemuan ${i + 1}`
+                // );
+                fs.mkdirSync(
+                    `${folderName}/${formattedSubject[i]}/${
+                        subFolder[0]
+                    }/Pertemuan ${k + 1}`
+                );
+            }
+            for (let l = 0; l < tugasAndMateri; l++) {
+                // fs.mkdirSync(
+                //     `${folderName}/${formattedSubject[i]}/${
+                //         subFolder[1]
+                //     }/Pertemuan ${i + 1}`
+                // );
+                fs.mkdirSync(
+                    `${folderName}/${formattedSubject[i]}/${
+                        subFolder[1]
+                    }/Pertemuan ${l + 1}`
+                );
+            }
+            for (let m = 0; m < quiz; m++) {
+                // fs.mkdirSync(
+                //     `${folderName}/${formattedSubject[i]}/${
+                //         subFolder[2]
+                //     }/Pertemuan ${i + 1}`
+                // );
+                fs.mkdirSync(
+                    `${folderName}/${formattedSubject[i]}/${
+                        subFolder[2]
+                    }/Quiz ${m + 1}`
+                );
+            }
+        }
+    } catch (error) {
+        console.log('Folder already exist!!');
+    }
+
+    console.log('Folder created');
 }
 main();
