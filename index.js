@@ -9,8 +9,8 @@ import figlet from 'figlet';
 // TODO
 // - Add ASCII ✔
 // - Add spinner ✔
-// - Deploy to npm 
-// - check in the current folder
+// - Deploy to npm ✔
+// - check in the current folder ✔
 
 
 async function main() {
