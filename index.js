@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-import * as p from '@clack/prompts';
+// import * as p from '@clack/prompts';
 
-import { select, text, spinner } from '@clack/prompts';
-// import { setTimeout } from 'node:timers/promises';
+import { text, spinner } from '@clack/prompts';
 import { setTimeout } from 'timers/promises';
 import * as fs from 'fs';
 import figlet from 'figlet';
@@ -34,13 +33,7 @@ async function main() {
         }
     );
     await setTimeout(300);
-    const s = p.spinner();
 
-    //     console.log(`
-    //  +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
-    //  |C|L|I| |F|O|L|D|E|R| |M|A|K|E|R|
-    //  +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
-    //     `);
 
     const semester = await text({
         message: 'Which semester are you in ?',
@@ -52,23 +45,16 @@ async function main() {
         },
     });
 
-    // s.start(`Loading..`);
-
-    // s.stop('');
-    // console.log('\n');
-
     const subject = await text({
         message: 'Insert your subject.',
         placeholder: 'ML,DS,MOBILE',
         initialValue: '',
         validate(value) {
             if (value.length === 0) return `Value is required!`;
-            // if (!Number.isInteger(value)) return 'Value must be a number';
+
         },
     });
-
     const formattedSubject = subject.split(',');
-    // console.log(formattedSubject);
 
     const folderName = `./Semester ${semester}`;
     const subFolder = [
@@ -146,11 +132,12 @@ async function main() {
     } catch (error) {
         console.log('Folder already exist!!');
     }
+    const s = spinner();
 
     s.start(`Creating Folder..`);
     await setTimeout(500);
-    s.stop();
+    s.stop('Folder created');
 
-    console.log('Folder created');
+    // console.log();
 }
 main();
