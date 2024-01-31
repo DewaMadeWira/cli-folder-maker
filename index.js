@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-// import * as p from '@clack/prompts';
 
 import { text, spinner } from '@clack/prompts';
 import { setTimeout } from 'timers/promises';
@@ -8,10 +7,11 @@ import * as fs from 'fs';
 import figlet from 'figlet';
 
 // TODO
-// - Add ASCII
-// Deploy to npm
-// check in the current folder
-// Add spinner
+// - Add ASCII ✔
+// - Add spinner ✔
+// - Deploy to npm 
+// - check in the current folder
+
 
 async function main() {
     figlet.text(
@@ -79,25 +79,14 @@ async function main() {
         }
         for (let i = 0; i < formattedSubject.length; i++) {
             for (let j = 0; j < subFolder.length; j++) {
-                // if (
-                //     !fs.existsSync(
-                //         `${folderName}/${formattedSubject[i]}/${items}`
-                //     )
-                // ) {
-                // fs.mkdirSync(
-                //     `${folderName}/${formattedSubject[i]}/${subFolder[j]}`
-                // );
+            
                 fs.mkdirSync(
                     `${folderName}/${formattedSubject[i]}/${subFolder[j]}`
                 );
                 // }
             }
             for (let k = 0; k < tugasAndMateri; k++) {
-                // fs.mkdirSync(
-                //     `${folderName}/${formattedSubject[i]}/${
-                //         subFolder[0]
-                //     }/Pertemuan ${i + 1}`
-                // );
+              
                 fs.mkdirSync(
                     `${folderName}/${formattedSubject[i]}/${
                         subFolder[0]
@@ -105,11 +94,7 @@ async function main() {
                 );
             }
             for (let l = 0; l < tugasAndMateri; l++) {
-                // fs.mkdirSync(
-                //     `${folderName}/${formattedSubject[i]}/${
-                //         subFolder[1]
-                //     }/Pertemuan ${i + 1}`
-                // );
+               
                 fs.mkdirSync(
                     `${folderName}/${formattedSubject[i]}/${
                         subFolder[1]
@@ -117,11 +102,7 @@ async function main() {
                 );
             }
             for (let m = 0; m < quiz; m++) {
-                // fs.mkdirSync(
-                //     `${folderName}/${formattedSubject[i]}/${
-                //         subFolder[2]
-                //     }/Pertemuan ${i + 1}`
-                // );
+             
                 fs.mkdirSync(
                     `${folderName}/${formattedSubject[i]}/${
                         subFolder[2]
