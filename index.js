@@ -11,7 +11,21 @@ import * as fs from 'fs';
 // Add spinner
 
 async function main() {
-    p.intro(`${color.bgGreen(color.white('CLI FOLDER MAKER'))}`);
+    console.log(`
+ +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
+ |C|L|I| |F|O|L|D|E|R| |M|A|K|E|R|
+ +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
+    `);
+
+    //     p.intro(
+    //         `${color.bgGreen(
+    //             color.(`
+    //  +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
+    //  |C|L|I| |F|O|L|D|E|R| |M|A|K|E|R|
+    //  +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
+    //     `)
+    //         )}`
+    //     );
 
     const semester = await text({
         message: 'Which semester are you in ?',
