@@ -1,8 +1,12 @@
+#!/usr/bin/env node
+
 import * as p from '@clack/prompts';
-import color from 'picocolors';
-import { select, text } from '@clack/prompts';
-// import * as fs from 'node:fs';
+
+import { select, text, spinner } from '@clack/prompts';
+// import { setTimeout } from 'node:timers/promises';
+import { setTimeout } from 'timers/promises';
 import * as fs from 'fs';
+import figlet from 'figlet';
 
 // TODO
 // - Add ASCII
@@ -11,21 +15,32 @@ import * as fs from 'fs';
 // Add spinner
 
 async function main() {
-    console.log(`
- +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
- |C|L|I| |F|O|L|D|E|R| |M|A|K|E|R|
- +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
-    `);
+    figlet.text(
+        'CLI FOLDER MAKER',
+        {
+            font: 'Slant',
+            horizontalLayout: 'default',
+            verticalLayout: 'default',
+            width: 100,
+            whitespaceBreak: true,
+        },
+        function (err, data) {
+            if (err) {
+                console.log('Something went wrong...');
+                console.dir(err);
+                return;
+            }
+            console.log(data);
+        }
+    );
+    await setTimeout(300);
+    const s = p.spinner();
 
-    //     p.intro(
-    //         `${color.bgGreen(
-    //             color.(`
+    //     console.log(`
     //  +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
     //  |C|L|I| |F|O|L|D|E|R| |M|A|K|E|R|
     //  +-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+-+
-    //     `)
-    //         )}`
-    //     );
+    //     `);
 
     const semester = await text({
         message: 'Which semester are you in ?',
@@ -36,6 +51,11 @@ async function main() {
             if (value.length === 0) return `Value is required!`;
         },
     });
+
+    // s.start(`Loading..`);
+
+    // s.stop('');
+    // console.log('\n');
 
     const subject = await text({
         message: 'Insert your subject.',
@@ -126,6 +146,10 @@ async function main() {
     } catch (error) {
         console.log('Folder already exist!!');
     }
+
+    s.start(`Creating Folder..`);
+    await setTimeout(500);
+    s.stop();
 
     console.log('Folder created');
 }
