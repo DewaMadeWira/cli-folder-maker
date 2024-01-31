@@ -47,7 +47,7 @@ async function main() {
 
     const subject = await text({
         message: 'Insert your subject.',
-        placeholder: 'ML,DS,MOBILE',
+        placeholder: 'Mobile,TKTI,SPK',
         initialValue: '',
         validate(value) {
             if (value.length === 0) return `Value is required!`;
